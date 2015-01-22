@@ -24,9 +24,40 @@ public class Stack<Item> implements Iterable<Item> {
 
     public Item pop() {
         // Remove item form top of stack
-        Item item = fist.item;
+        Item item = first.item;
         first = first.next;
         N--;
         return item;
     }
+
+    public Iterator<Item> iterator() {
+        return new StackIterator();
+    }
+
+    private class StackIterator implements Iterator<Item> {
+        private int i = N;
+        public boolean hasNext() { return i > 0; }
+        public Item next() { return first.next.item; }
+        public void remove() { }
+    }
+
+    // Test client
+    public static void main(String[] args) {
+        Stack<String> s = new Stack<String>();
+        
+        while(!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if (!item.equals("-")) {
+                s.push(item);
+            } else if (!s.isEmpty()) {
+                StdOut.print(s.pop() + " ");
+            }
+        }
+            StdOut.println("(" + s.size() + " left on stack)");
+
+            for (String item : s)
+                StdOut.print(item + " ");
+            StdOut.println();
+    }
+}
 
