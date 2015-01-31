@@ -35,14 +35,20 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     private class StackIterator implements Iterator<Item> {
+        private Node current = first;
         private int i = N;
-        public boolean hasNext() { return i > 0; }
-        public Item next() { return first.next.item; }
+        public boolean hasNext() { return current != null; }
+        public Item next() { 
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
         public void remove() { }
     }
 
     // Test client
     public static void main(String[] args) {
+        // Create a stack and push/pop strings as directed on StdIn.
         Stack<String> s = new Stack<String>();
         
         while(!StdIn.isEmpty()) {
@@ -53,11 +59,11 @@ public class Stack<Item> implements Iterable<Item> {
                 StdOut.print(s.pop() + " ");
             }
         }
-            StdOut.println("(" + s.size() + " left on stack)");
-
-            for (String item : s)
-                StdOut.print(item + " ");
-            StdOut.println();
+        StdOut.println("(" + s.size() + " left on stack)");
+        for (String item : s)
+            StdOut.print(item + " ");
+        StdOut.println();
+        StdOut.println(s.isEmpty());
     }
 }
 
