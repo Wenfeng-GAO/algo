@@ -47,4 +47,4 @@ public class UF {
             if (id[i] == pId) id[i] = qId;
         count--;
     }
-}
+
