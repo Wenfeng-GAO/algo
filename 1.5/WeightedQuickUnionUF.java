@@ -27,7 +27,7 @@ public class WeightedQuickUnionUF {
             int q = StdIn.readInt();
             if (!uf.connected(p, q)) {
                 uf.union(p, q);
-                StdOut.println(p + " " + q);
+                //StdOut.println(p + " " + q);
             }
         }
         StdOut.println(uf.count() + " components");
@@ -38,7 +38,10 @@ public class WeightedQuickUnionUF {
      */
     private int find(int p) {
         // Follow links to find a root.
-        while (p != id[p]) p = id[p];
+        while (p != id[p]) {
+            id[p] = id[id[p]];
+            p = id[p];
+        }
         return p;
     }
 
