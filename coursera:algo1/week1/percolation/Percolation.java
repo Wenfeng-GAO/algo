@@ -1,7 +1,12 @@
+/**
+ * Class to model a percolation system
+ * @author Wenfeng Gao
+ * @date 2015-06-29
+ */
 public class Percolation {
-    WeightedQuickUnionUF uf;
-    int[][] site;
-    int n;
+    private WeightedQuickUnionUF uf;
+    private int[][] site;
+    private int n;
 
     /* create N-by-N grid, with all sites blocked */
     public Percolation(int N) {
@@ -72,12 +77,12 @@ public class Percolation {
     /* test client */
     public static void main(String[] args) {
         Percolation percolation = new Percolation(0);
-        percolation.open(1,1);
-        percolation.open(2,1);
-        percolation.open(3,1);
-        percolation.open(4,1);
-        percolation.open(5,1);
-        percolation.open(1,5);
+        percolation.open(1, 1);
+        percolation.open(2, 1);
+        percolation.open(3, 1);
+        percolation.open(4, 1);
+        percolation.open(5, 1);
+        percolation.open(1, 5);
         
         if (percolation.isFull(1, 5))
             StdOut.println("yeah");

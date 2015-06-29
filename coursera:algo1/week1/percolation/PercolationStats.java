@@ -1,5 +1,10 @@
+/**
+ * Class to get stastic result about threshold of a percolation system.
+ * @author Wenfeng Gao
+ * @date 2015-06-29
+ */
 public class PercolationStats {
-    double[] fraction;
+    private double[] fraction;
 
     /* perform T independent experiments on an N-by-N grid */
     public PercolationStats(int N, int T) {
@@ -40,13 +45,13 @@ public class PercolationStats {
             int x = StdRandom.uniform(N) + 1;
             int y = StdRandom.uniform(N) + 1;
             while (percolation.isOpen(x, y)) {
-                x= StdRandom.uniform(N)+ 1;
-                y= StdRandom.uniform(N) + 1;
+                x = StdRandom.uniform(N)+ 1;
+                y = StdRandom.uniform(N) + 1;
             }
             percolation.open(x, y);
             ++n;
         }
-        return (double)n / (double)(N*N);
+        return (double) n / (double) (N*N);
     }
 
     /* test client */
