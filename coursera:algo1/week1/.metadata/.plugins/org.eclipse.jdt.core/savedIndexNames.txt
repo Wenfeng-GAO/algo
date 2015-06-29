@@ -1,2 +1,0 @@
-INDEX VERSION 1.127+/Users/Wenfeng/Try/algorithms/ALGORITHMS/algo/coursera:algo1/week1/.metadata/.plugins/org.eclipse.jdt.core
-352518825.index
