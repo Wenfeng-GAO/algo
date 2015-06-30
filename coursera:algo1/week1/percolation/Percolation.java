@@ -32,18 +32,24 @@ public class Percolation {
 
     /* is site (i, j) is full? */
     public boolean isFull(int i, int j) {
+        validate(i, j);
         return uf.connected(0, xyTo1D(i, j));
     }
 
     /* does the system percolate? */
     public boolean percolates() {
-        return uf.connected(0, n*n+1);
+        boolean isFull = false;
+        for (int i = 1; i <= n; ++i) {
+            if (isFull(n, i)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /* validate that (i, j) is a valid site */
     private void validate(int i, int j) {
-        int N = site.length;
-        if (i < 1 || i > N || j < 1 || j > N) {
+        if (i < 1 || i > n || j < 1 || j > n) {
             throw new IndexOutOfBoundsException("site(" + i
                     + ", " + j + ") is out of bound");
         }
@@ -61,8 +67,8 @@ public class Percolation {
 
         if (i == 1)
             uf.union(p, 0);
-        else if (i == n)
-            uf.union(p, n*n+1);
+        // if (i == n)
+        //     uf.union(p, n*n+1);
 
         if (i-1 > 0 && isOpen(i-1, j))
             uf.union(p, xyTo1D(i-1, j));
@@ -76,15 +82,10 @@ public class Percolation {
 
     /* test client */
     public static void main(String[] args) {
-        Percolation percolation = new Percolation(0);
+        Percolation percolation = new Percolation(1);
         percolation.open(1, 1);
-        percolation.open(2, 1);
-        percolation.open(3, 1);
-        percolation.open(4, 1);
-        percolation.open(5, 1);
-        percolation.open(1, 5);
         
-        if (percolation.isFull(1, 5))
+        if (percolation.isFull(1, 1))
             StdOut.println("yeah");
         if (percolation.percolates())
             StdOut.println("percolate");
