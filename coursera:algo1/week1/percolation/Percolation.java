@@ -61,7 +61,7 @@ public class Percolation {
 
         if (i == 1)
             uf.union(p, 0);
-         if (i == n && isFull(i, j))
+         if (i == n) 
              uf.union(p, n*n+1);
 
         if (i-1 > 0 && isOpen(i-1, j))
@@ -76,8 +76,13 @@ public class Percolation {
 
     /* test client */
     public static void main(String[] args) {
-        Percolation percolation = new Percolation(1);
+        Percolation percolation = new Percolation(6);
         percolation.open(1, 1);
+        percolation.open(2, 1);
+        percolation.open(3, 1);
+        percolation.open(4, 1);
+        percolation.open(5, 1);
+        percolation.open(6, 1);
         
         if (percolation.isFull(1, 1))
             StdOut.println("yeah");
