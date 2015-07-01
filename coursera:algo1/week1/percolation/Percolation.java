@@ -38,13 +38,7 @@ public class Percolation {
 
     /* does the system percolate? */
     public boolean percolates() {
-        boolean isFull = false;
-        for (int i = 1; i <= n; ++i) {
-            if (isFull(n, i)) {
-                return true;
-            }
-        }
-        return false;
+        return uf.connected(0, n*n+1);
     }
 
     /* validate that (i, j) is a valid site */
@@ -67,8 +61,8 @@ public class Percolation {
 
         if (i == 1)
             uf.union(p, 0);
-        // if (i == n)
-        //     uf.union(p, n*n+1);
+         if (i == n && isFull(i, j))
+             uf.union(p, n*n+1);
 
         if (i-1 > 0 && isOpen(i-1, j))
             uf.union(p, xyTo1D(i-1, j));
