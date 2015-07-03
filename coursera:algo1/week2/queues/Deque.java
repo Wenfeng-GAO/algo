@@ -34,6 +34,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     /* add the item to the front */
     public void addFirst(Item item) {
+        if (item == null) {
+            throw new NullPointerException();
+        }
         Node<Item> toAdd = new Node<Item>(item);
         Node<Item> before = head.next;
         head.connectRight(toAdd);
@@ -43,6 +46,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     /* add the item to the end */
     public void addLast(Item item) {
+        if (item == null) {
+            throw new NullPointerException();
+        }
         Node<Item> toAdd = new Node<Item>(item);
         Node<Item> before = tail.previous;
         before.connectRight(toAdd);
@@ -65,6 +71,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     /* remove and return the item from the end */
     public Item removeLast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Deque is empty, can't remove");
+        }
         Node<Item> togo = tail.previous;
         togo.previous.connectRight(tail);
         togo.previous = null;
@@ -103,7 +112,7 @@ public class Deque<Item> implements Iterable<Item> {
     private class Node<Item> {
 
         private final Item item;
-        public Node<Item> previous, next;
+        private Node<Item> previous, next;
 
         public Node(Item item) {
             this.item = item;
