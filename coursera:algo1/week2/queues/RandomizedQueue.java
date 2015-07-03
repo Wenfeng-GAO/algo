@@ -63,7 +63,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     private class RandomizedQueueIterator implements Iterator<Item> {
-        int n = size();
+        private int n = size();
 
         public boolean hasNext() {
             return n != 0;
