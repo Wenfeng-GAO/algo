@@ -46,7 +46,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             resize(queue.length / 2);
         }
         swap(queue, StdRandom.uniform(size()), size() - 1);
-        return queue[--N];
+        Item togo = queue[--N];
+        queue[N] = null;
+        return togo;
     }
 
     /* return (but do not remove) a random item */

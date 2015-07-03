@@ -49,15 +49,17 @@ public class RandomizedQueueTest {
             queue.enqueue((double)i);
         }
         for (Double d : queue) {
-            print("@TestIterator: " + d);
+            print("@TestIterator: queue1 " + d);
+        }
+        for (Double d : queue) {
+            print("@TestIterator: queue2 " + d);
         }
     }
             
     public static void main(String[] args) {
-        RandomizedQueueTest.testEnqueue(5);
-        RandomizedQueueTest.testDequeue(15, 9);
-        RandomizedQueueTest.testSample(15, 9);
-        RandomizedQueueTest.testIterator(5);
-
+        // RandomizedQueueTest.testEnqueue(5);
+        // RandomizedQueueTest.testDequeue(15, 9);
+        // RandomizedQueueTest.testSample(15, 9);
+        RandomizedQueueTest.testIterator(10);
     }
 }
