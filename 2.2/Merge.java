@@ -3,6 +3,7 @@ public class Merge {
 
     public static void sort(Comparable[] a) {
         aux = new Comparable[a.length]; // Allocate space just once.
+        StdOut.println(a.length);
         sort(a, 0, a.length-1);
     }
 
@@ -20,7 +21,7 @@ public class Merge {
     private static void merge(Comparable[] a, int lo, int mid, int hi) {
         // Merge a[lo...mid] with a[mid+1...hi].
         int i = lo, j = mid + 1;
-        for (int k = lo, k <= hi; ++k) {
+        for (int k = lo; k <= hi; ++k) {
             // Copy a[lo...hi] to aux[lo...hi]
             aux[k] = a[k];
         }
@@ -29,11 +30,18 @@ public class Merge {
                 a[k] = aux[j++];
             } else if (j > hi) {
                 a[k] = aux[j++];
-            } else if (less(aux[j], aux[i])) {
+            } else if (Example.less(aux[j], aux[i])) {
                 a[k] = aux[j++];
             } else {
                 a[k] = aux[i++];
             }
         }
     }
+
+    // public static void main(String[] args) {
+    //     int[] a = {9, 8, 7, 6, 6};
+    //     Merge.sort(a);
+    //     for (int i = 0; i < a.length; ++i)
+    //         System.out.print(a[i] + " ");
+    // }
 }
