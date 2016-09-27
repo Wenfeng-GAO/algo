@@ -3,7 +3,6 @@ public class Merge {
 
     public static void sort(Comparable[] a) {
         aux = new Comparable[a.length]; // Allocate space just once.
-        StdOut.println(a.length);
         sort(a, 0, a.length-1);
     }
 
@@ -29,7 +28,7 @@ public class Merge {
             if (i > mid) {
                 a[k] = aux[j++];
             } else if (j > hi) {
-                a[k] = aux[j++];
+                a[k] = aux[i++];
             } else if (Example.less(aux[j], aux[i])) {
                 a[k] = aux[j++];
             } else {

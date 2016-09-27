@@ -5,7 +5,8 @@ public class Example {
         // Selection.sort(a);
         // Insertion.sort(a);
         // Shell.sort(a);
-        Merge.sort(a);
+        // Merge.sort(a);
+        MergeBU.sort(a);
     }
 
     public static boolean isSorted(Comparable[] a) {
